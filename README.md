@@ -1,2 +1,3 @@
-# Pomodorizator
+# Habify
 
+Sistema para gerenciamento de tarefas.
