@@ -4,8 +4,10 @@ import TaskCard from "./TaskCard";
 const TaskList = ({
   title = "To do",
   tasks = [],
-  onNewTask = () => { },
-  onTaskChange = () => { },
+  allowPlay = false,
+  onNewTask = () => {},
+  onTaskChange = () => {},
+  onTaskPlay = () => {},
 }) => {
   const [newTask, setNewTask] = useState("");
 
@@ -20,14 +22,20 @@ const TaskList = ({
       <h2 className="text-2xl text-primary font-bold">{title}</h2>
       <div>
         {tasks.map((task, index) => (
-          <TaskCard key={index} task={task} onChange={onTaskChange} />
+          <TaskCard
+            key={index}
+            task={task}
+            onChange={onTaskChange}
+            onPlay={onTaskPlay}
+            allowPlay={allowPlay}
+          />
         ))}
         <form onSubmit={handleAddSubmit} className="m-2">
           <input
             className="shadow-md bg-gray-50 p-3 rounded-md block w-full"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
-            placeholder="New Task"
+            placeholder="Nova tarefa"
           />
         </form>
       </div>

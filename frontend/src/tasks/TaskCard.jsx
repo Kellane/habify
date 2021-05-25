@@ -1,7 +1,13 @@
 import { useState } from "react";
+import { Button } from "../ui";
 import TaskModal from "./TaskModal";
 
-const TaskCard = ({ task, onChange = () => {} }) => {
+const TaskCard = ({
+  task,
+  allowPlay = false,
+  onPlay = () => {},
+  onChange = () => {},
+}) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleStatus = (e) => {
@@ -29,6 +35,13 @@ const TaskCard = ({ task, onChange = () => {} }) => {
             {task.title}
           </h2>
         </div>
+        {allowPlay && (
+          <div className="col-span-2 text-right">
+            <Button type="success" onClick={() => onPlay(task)}>
+              Play
+            </Button>
+          </div>
+        )}
       </div>
       <TaskModal
         task={task}
