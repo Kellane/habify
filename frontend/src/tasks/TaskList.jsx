@@ -2,9 +2,10 @@ import { useState } from "react";
 import TaskCard from "./TaskCard";
 
 const TaskList = ({
+  title = "To do",
   tasks = [],
-  onNewTask = () => {},
-  onTaskChange = () => {},
+  onNewTask = () => { },
+  onTaskChange = () => { },
 }) => {
   const [newTask, setNewTask] = useState("");
 
@@ -15,17 +16,21 @@ const TaskList = ({
   };
 
   return (
-    <div>
-      {tasks.map((task, index) => (
-        <TaskCard key={index} task={task} onChange={onTaskChange} />
-      ))}
-      <form onSubmit={handleAddSubmit}>
-        <input
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="New Task"
-        />
-      </form>
+    <div className="p-2 shadow-sm rounded-md bg-white">
+      <h2 className="text-2xl text-primary font-bold">{title}</h2>
+      <div>
+        {tasks.map((task, index) => (
+          <TaskCard key={index} task={task} onChange={onTaskChange} />
+        ))}
+        <form onSubmit={handleAddSubmit} className="m-2">
+          <input
+            className="shadow-md bg-gray-50 p-3 rounded-md block w-full"
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            placeholder="New Task"
+          />
+        </form>
+      </div>
     </div>
   );
 };
