@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useTasks = () => {
-  const [tasks, setTasks] = useState([]);
-  const [nextId, setNextId] = useState(1);
+  const [tasks, _setTasks] = useState([]);
+  const nextId = (tasks[tasks.length - 1]?.id ?? 0) + 1;
+
+  const setTasks = (tasks) => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    _setTasks(tasks);
+  };
+
+  useEffect(() => {
+    _setTasks(JSON.parse(localStorage.getItem("tasks") || "[]"));
+  }, []);
 
   const generateTask = (task) => {
-    console.log(task)
     const newTask = {
       done: true,
       labels: [],
       ...task,
       id: nextId,
     };
-    setNextId((nextId) => nextId + 1);
     return newTask;
   };
 
