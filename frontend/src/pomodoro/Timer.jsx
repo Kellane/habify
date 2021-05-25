@@ -6,15 +6,15 @@ const MINUTE = 60;
 
 const MODES = {
   WORK: {
-    duration: (25 / 50) * MINUTE,
+    duration: 25 * MINUTE,
     label: "Work",
   },
   SHORT_BREAK: {
-    duration: (5 / 50) * MINUTE,
+    duration: 5 * MINUTE,
     label: "Short break",
   },
   LONG_BREAK: {
-    duration: (15 / 50) * MINUTE,
+    duration: 15 * MINUTE,
     label: "Long break",
   },
 };
