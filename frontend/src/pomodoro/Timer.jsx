@@ -96,8 +96,8 @@ const Timer = ({ task, onBack = () => {}, onFinish = () => {} }) => {
         </div>
       </div>
       <div className="bg-gray-50 px-4 py-3 sm:px-6 text-right">
-        <Button onClick={onBack}>Back</Button>
-        <Button onClick={onFinish}>Finish Task</Button>
+        <Button onClick={onBack}>Voltar</Button>
+        <Button onClick={onFinish}>Finalizar tarefa</Button>
       </div>
     </div>
   );

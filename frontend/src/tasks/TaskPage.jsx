@@ -15,7 +15,7 @@ const Page = () => {
         <div className="flex-1" style={{ maxWidth: 1000 }}>
           <div className="grid grid-cols-2 gap-5">
             <TaskList
-              title="Tarefas de hoje"
+              title="Para fazer"
               tasks={tasks.filter((t) => !t.done)}
               onNewTask={(task) => addTask({ ...task, done: false })}
               onTaskChange={updateTask}
@@ -26,7 +26,7 @@ const Page = () => {
               }}
             />
             <TaskList
-              title="Concluidas hoje"
+              title="Feitas"
               tasks={tasks.filter((t) => t.done)}
               onNewTask={(task) => addTask({ ...task, done: true })}
               onTaskChange={updateTask}
